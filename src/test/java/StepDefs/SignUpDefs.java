@@ -11,11 +11,11 @@ import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
 import static Utilities.DriverSetup.getDriver;
+import static StepDefs.Hooks.softAssert;
 
 public class SignUpDefs {
     SigninPage signinPage = new SigninPage();
     SignupPage signupPage = new SignupPage();
-    SoftAssert softAssert = new SoftAssert();
     HomePage homePage = new HomePage();
 
     @Given("User should be on the sign up page")
@@ -30,51 +30,51 @@ public class SignUpDefs {
     @Then("The title {string} present on the page")
     public void theTitlePresentOnThePage(String arg0) throws InterruptedException {
         softAssert.assertEquals(signupPage.getElementText(signupPage.signupPageTitle),arg0);
-        Assert.assertEquals(signupPage.getElementText(signupPage.signupPageTitle),arg0);
+//        Assert.assertEquals(signupPage.getElementText(signupPage.signupPageTitle),arg0);
     }
 
     @And("Close button is present on the sign up page")
     public void closeButtonIsPresentOnTheSignUpPage() throws InterruptedException {
         softAssert.assertTrue(signupPage.getDisplayStatus(signupPage.closeButton));
-        Assert.assertTrue(signupPage.getDisplayStatus(signupPage.closeButton));
+//        Assert.assertTrue(signupPage.getDisplayStatus(signupPage.closeButton));
     }
 
     @And("All fields required to sign up are present")
     public void allFieldsRequiredToSignUpArePresent() throws InterruptedException{
-//        softAssert.assertTrue(signupPage.getDisplayStatus(signupPage.firstNameField));
-//        softAssert.assertTrue(signupPage.getDisplayStatus(signupPage.lastNameField));
-//        softAssert.assertTrue(signupPage.getDisplayStatus(signupPage.emailField));
-//        softAssert.assertTrue(signupPage.getDisplayStatus(signupPage.phoneNumberField));
-//        softAssert.assertTrue(signupPage.getDisplayStatus(signupPage.passwordField));
-//        softAssert.assertTrue(signupPage.getDisplayStatus(signupPage.confirmPasswordField));
+        softAssert.assertTrue(signupPage.getDisplayStatus(signupPage.firstNameField));
+        softAssert.assertTrue(signupPage.getDisplayStatus(signupPage.lastNameField));
+        softAssert.assertTrue(signupPage.getDisplayStatus(signupPage.emailField));
+        softAssert.assertTrue(signupPage.getDisplayStatus(signupPage.phoneNumberField));
+        softAssert.assertTrue(signupPage.getDisplayStatus(signupPage.passwordField));
+        softAssert.assertTrue(signupPage.getDisplayStatus(signupPage.confirmPasswordField));
 
-        Assert.assertTrue(signupPage.getDisplayStatus(signupPage.firstNameField));
-        Assert.assertTrue(signupPage.getDisplayStatus(signupPage.lastNameField));
-        Assert.assertTrue(signupPage.getDisplayStatus(signupPage.emailField));
-        Assert.assertTrue(signupPage.getDisplayStatus(signupPage.phoneNumberField));
-        Assert.assertTrue(signupPage.getDisplayStatus(signupPage.passwordField));
-        Assert.assertTrue(signupPage.getDisplayStatus(signupPage.confirmPasswordField));
+//        Assert.assertTrue(signupPage.getDisplayStatus(signupPage.firstNameField));
+//        Assert.assertTrue(signupPage.getDisplayStatus(signupPage.lastNameField));
+//        Assert.assertTrue(signupPage.getDisplayStatus(signupPage.emailField));
+//        Assert.assertTrue(signupPage.getDisplayStatus(signupPage.phoneNumberField));
+//        Assert.assertTrue(signupPage.getDisplayStatus(signupPage.passwordField));
+//        Assert.assertTrue(signupPage.getDisplayStatus(signupPage.confirmPasswordField));
     }
 
     @And("Eye icon is present in password and confirm password field")
     public void eyeIconIsPresentInPasswordAndConfirmPasswordField() throws InterruptedException{
-//        softAssert.assertTrue(signupPage.getDisplayStatus(signupPage.passwordEyeIcon));
-//        softAssert.assertTrue(signupPage.getDisplayStatus(signupPage.confirmPasswordEyeIcon));
+        softAssert.assertTrue(signupPage.getDisplayStatus(signupPage.passwordEyeIcon));
+        softAssert.assertTrue(signupPage.getDisplayStatus(signupPage.confirmPasswordEyeIcon));
 
-        Assert.assertTrue(signupPage.getDisplayStatus(signupPage.passwordEyeIcon));
-        Assert.assertTrue(signupPage.getDisplayStatus(signupPage.confirmPasswordEyeIcon));
+//        Assert.assertTrue(signupPage.getDisplayStatus(signupPage.passwordEyeIcon));
+//        Assert.assertTrue(signupPage.getDisplayStatus(signupPage.confirmPasswordEyeIcon));
     }
 
     @And("Password enter by user shown in black circle")
     public void passwordEnterByUserShownInBlackCircle() throws InterruptedException{
-        signupPage.writeOnElement(signupPage.passwordField, "pass12345");
-        signinPage.writeOnElement(signupPage.confirmPasswordField, "pass12345");
+//        signupPage.writeOnElement(signupPage.passwordField, "pass12345");
+//        signinPage.writeOnElement(signupPage.confirmPasswordField, "pass12345");
 
-//        softAssert.assertEquals(signupPage.getAttributeText(signupPage.passwordField, "type"),"password");
-//        softAssert.assertEquals(signupPage.getAttributeText(signupPage.confirmPasswordField, "type"),"password");
+        softAssert.assertEquals(signupPage.getAttributeText(signupPage.passwordField, "type"),"password");
+        softAssert.assertEquals(signupPage.getAttributeText(signupPage.confirmPasswordField, "type"),"password");
 
-        Assert.assertEquals(signupPage.getAttributeText(signupPage.passwordField, "type"),"password");
-        Assert.assertEquals(signupPage.getAttributeText(signupPage.confirmPasswordField, "type"),"password");
+//        Assert.assertEquals(signupPage.getAttributeText(signupPage.passwordField, "type"),"password");
+//        Assert.assertEquals(signupPage.getAttributeText(signupPage.confirmPasswordField, "type"),"password");
 
         signupPage.addScreenShoot("Password Encrypted");
         signupPage.clearInputText(signupPage.passwordField);
@@ -92,16 +92,9 @@ public class SignUpDefs {
         softAssert.assertEquals(signupPage.getAttributeText(signupPage.passwordField, "type"),"text");
         softAssert.assertEquals(signupPage.getAttributeText(signupPage.confirmPasswordField, "type"),"text");
 
-        Assert.assertEquals(signupPage.getAttributeText(signupPage.passwordField, "type"),"text");
-        Assert.assertEquals(signupPage.getAttributeText(signupPage.confirmPasswordField, "type"),"text");
-
         signupPage.clearInputText(signupPage.passwordField);
     }
 
-    @And("Assert all the errors")
-    public void assertAllTheErrors() {
-        softAssert.assertAll();
-    }
 
     @Given("Display Sign up page")
     public void displaySignUpPage() throws InterruptedException{

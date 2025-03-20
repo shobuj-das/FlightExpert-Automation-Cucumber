@@ -14,4 +14,3 @@ Feature: Sign Up page Validation
 #    And Eye icon is present in password and confirm password field
 #    And Password enter by user shown in black circle
 #    And Clicking on the eye button displays the password
-#    And Assert all the errors
