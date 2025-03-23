@@ -2,7 +2,7 @@ Feature: Home page
   Scenario: Home page elements validation
     Given User on the home page
     Then User should see the sign in button
-    And Home page title should be "Flight Expert: Book Flight Tickets, Hotels & Visa"
+    And Home page title should be "Flight Expert: Book Flight Tickets, Hotels & Visa Online"
     And Flight button should be displayed
     And Flight button should be clickable
     And Hotel button should be displayed
@@ -23,6 +23,3 @@ Feature: Home page
     And Student fares radio button should be clickable
     And Seaman fares radio button should be displayed
     And Seaman fares radio button should be clickable
-
-
-#  Scenario: Footer section validation

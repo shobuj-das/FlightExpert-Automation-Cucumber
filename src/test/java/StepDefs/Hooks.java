@@ -27,6 +27,8 @@ public class Hooks {
             System.out.println("Soft assertions failed: " + e.getMessage());
             Assert.fail(e.getMessage()); // This makes Allure mark the test as failed
         }
-        closeBrowser();
+        finally {
+            closeBrowser();
+        }
     }
 }

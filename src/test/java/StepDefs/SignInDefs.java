@@ -42,9 +42,10 @@ public class SignInDefs {
 
     @And("User click on the sign in button")
     public void userClickOnTheSignInButton() throws InterruptedException {
-        signinPage.clickOnElement(signinPage.signinButton);
+//        signinPage.clickOnElement(signinPage.signinButton);
+
 //        getDriver().get(homePage.homepageUrl);
-//        Thread.sleep(1000);
+        Thread.sleep(90000);
 //        JavascriptExecutor js = (JavascriptExecutor) getDriver();
 //        js.executeScript("arguments[0].click();", signinPage.getElement(signinPage.signinButton));
 
