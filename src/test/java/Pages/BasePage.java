@@ -2,10 +2,7 @@ package Pages;
 
 import Utilities.DriverSetup;
 import io.qameta.allure.Allure;
-import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -77,5 +74,23 @@ public class BasePage extends DriverSetup {
     public void hoverOnElement(By locator) throws InterruptedException{
         Actions actions = new Actions(getDriver());
         actions.moveToElement(getElement(locator)).build().perform();
+    }
+
+    // navigate
+    public void navigateBack(){
+        getDriver().navigate().back();
+    }
+    public void navigateForward(){
+        getDriver().navigate().forward();
+    }
+    public void refresh(){
+        getDriver().navigate().refresh();
+    }
+
+    public void scrollIntoViewPoint(By locator) throws InterruptedException{
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+        js.executeScript("arguments[0].scrollIntoView(true)",getElement(locator));
+
+//        Thread.sleep(3000);
     }
 }

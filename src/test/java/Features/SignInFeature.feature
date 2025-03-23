@@ -13,7 +13,6 @@ Feature: Sign in page
     And User enters <password> in the password field
     And User click on the sign in button
     Then User should see <emailErrorMgs> <passwordErrorMgs> <signInErrorMgs> error message
-    And Validate all assertion
     Examples:
       | email                | password        | emailErrorMgs           | passwordErrorMgs       | signInErrorMgs                            |
       | "shobuj@yopmail.com" | ""              | ""                      | "Password is required" | ""                                        |

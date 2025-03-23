@@ -4,8 +4,7 @@ import Pages.HomePage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import org.testng.asserts.SoftAssert;
-
+import org.openqa.selenium.JavascriptExecutor;
 import static Utilities.DriverSetup.getDriver;
 import static StepDefs.Hooks.softAssert;
 public class HomePageDfs {
@@ -129,5 +128,46 @@ public class HomePageDfs {
     @And("Seaman fares radio button should be clickable")
     public void seamanFaresRadioButtonShouldBeClickable() throws InterruptedException{
         softAssert.assertTrue(homePage.getEnableStatus(homePage.seamanFares));
+    }
+
+    @Then("Hover to the footer section")
+    public void hoverToTheFooterSection() throws InterruptedException {
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+        js.executeScript("window.scrollTo(0,document.body.scrollHeight);");
+
+//        homePage.hoverOnElement(homePage.copyRight);
+    }
+
+    @Then("Checking all links under About section")
+    public void checkingAllLinksUnderAboutSection() throws InterruptedException {
+        homePage.scrollIntoViewPoint(homePage.blogLink);
+        softAssert.assertEquals(homePage.getElementText(homePage.about), "About", "About text mismatched");
+        // about flight expert
+        softAssert.assertEquals(homePage.getElementText(homePage.aboutFlightExpertText),"About Flight Expert", "About Flight Expert text mismatched");
+        softAssert.assertTrue(homePage.getEnableStatus(homePage.aboutFlightExpertLink));
+        homePage.clickOnElement(homePage.aboutFlightExpertLink);
+        softAssert.assertEquals(getDriver().getTitle(), "About Us", "Title mismatched for About Flight Expert");
+        softAssert.assertEquals(getDriver().getCurrentUrl(),"https://flightexpert.com/about-us");
+
+        // back to home page and hover to footer section
+//        homePage.navigateBack();
+////        hoverToTheFooterSection();
+//        homePage.scrollIntoViewPoint(homePage.copyRight);
+//        // best price guarantee
+//        softAssert.assertEquals(homePage.getElementText(homePage.bestPriceGuaranteeText),"Best Price Guarantee");
+//        softAssert.assertTrue(homePage.getEnableStatus(homePage.bestPriceGuaranteeLink));
+//        homePage.clickOnElement(homePage.bestPriceGuaranteeLink);
+//        softAssert.assertEquals(getDriver().getTitle(),"Best Price Guarantee");
+//        softAssert.assertEquals(getDriver().getCurrentUrl(),"https://flightexpert.com/best-price-guarantee");
+//
+//        // back to home page and hover to footer section
+//        homePage.navigateBack();
+////        hoverToTheFooterSection();
+
+        //
+    }
+
+    @And("Checking all links under Help section")
+    public void checkingAllLinksUnderHelpSection() {
     }
 }

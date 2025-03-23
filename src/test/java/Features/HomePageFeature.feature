@@ -23,3 +23,9 @@ Feature: Home page
     And Student fares radio button should be clickable
     And Seaman fares radio button should be displayed
     And Seaman fares radio button should be clickable
+
+  Scenario: Checking all links in the footer section
+    Given User on the home page
+#    Then Hover to the footer section
+    Then Checking all links under About section
+    And Checking all links under Help section
